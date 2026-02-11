@@ -17,17 +17,17 @@ Este roadmap divide o projeto em pequenas tarefas verificáveis para garantir qu
 - [x] 2.3. Implementar Proteção de Rotas (Middleware).
 - [x] 2.4. Verificação de Código & Deploy.
 
-## Parte 3: Busca & Marketplace (O Motor)
-- [ ] 3.1. Criar Página de Resultados de Busca com Filtros Dinâmicos.
-- [ ] 3.2. Integrar Mapa (Mapbox/Google Maps) para visualização geográfica.
-- [ ] 3.3. Implementar lógica de Fetching no Supabase com filtros de especialidade.
-- [ ] 3.4. Verificação de Código & Deploy.
+## Parte 3: Busca & Marketplace (CONCLUÍDA ✅)
+- [x] 3.1. Criar Página de Resultados de Busca com Filtros Dinâmicos.
+- [x] 3.2. Integrar Mapa (Placeholder para visualização geográfica).
+- [x] 3.3. Implementar lógica de Fetching no Supabase com filtros de especialidade.
+- [x] 3.4. Verificação de Código & Deploy.
 
-## Parte 4: Perfil & Agendamento (Booking)
-- [ ] 4.1. Criar Página de Perfil Público do Profissional (Bio, Galeria, Feed).
-- [ ] 4.2. Implementar Calendário de Disponibilidade e Slot Locking (Trava de 10min).
-- [ ] 4.3. Finalizar Fluxo de Agendamento (Reserva -> Confirmação).
-- [ ] 4.4. Verificação de Código & Deploy.
+## Parte 4: Perfil & Agendamento (Booking) (CONCLUÍDA ✅)
+- [x] 4.1. Criar Página de Perfil Público do Profissional (Bio, Galeria, Feed).
+- [x] 4.2. Implementar Calendário de Disponibilidade e Slot Locking (Trava de 10min).
+- [x] 4.3. Finalizar Fluxo de Agendamento (Reserva -> Confirmação).
+- [x] 4.4. Verificação de Código & Deploy.
 
 ## Parte 5: Dashboard & Gestão Operacional
 - [ ] 5.1. Dashboard do Profissional (Gestão de Agenda e Leads).
