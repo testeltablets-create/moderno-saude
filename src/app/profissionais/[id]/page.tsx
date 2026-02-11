@@ -5,12 +5,29 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Award, MessageSquare, MapPin, Star, ShieldCheck } from "lucide-react"
-import { Header } from "@/components/Header"
-import { Footer } from "@/components/Footer"
 import BookingWidget from "@/components/BookingWidget"
+import { Metadata } from "next"
 
 interface ProfessionalProfilePageProps {
   params: Promise<{ id: string }>
+}
+
+export async function generateMetadata({ params }: ProfessionalProfilePageProps): Promise<Metadata> {
+  const { id } = await params
+  const supabase = await createClient()
+  
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("full_name, specialty, bio")
+    .eq("id", id)
+    .single()
+
+  if (!profile) return { title: "Profissional não encontrado" }
+
+  return {
+    title: `${profile.full_name} | ${profile.specialty} no Moderno Saúde`,
+    description: profile.bio?.substring(0, 160) || `Agende sua consulta com ${profile.full_name}, especialista em ${profile.specialty}.`,
+  }
 }
 
 export default async function ProfessionalProfilePage({ params }: ProfessionalProfilePageProps) {
@@ -37,8 +54,6 @@ export default async function ProfessionalProfilePage({ params }: ProfessionalPr
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <Header />
-      
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           
@@ -166,8 +181,6 @@ export default async function ProfessionalProfilePage({ params }: ProfessionalPr
 
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }

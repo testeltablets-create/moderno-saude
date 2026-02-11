@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, Suspense } from "react"
-import { useSearchParams } from "next/navigation"
+import { useSearchParams, useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -9,11 +9,14 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Search, MapPin, Star, Filter, Loader2 } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 function SearchResultsContent() {
   const searchParams = useSearchParams()
-  const q = searchParams.get("q") || ""
-  const l = searchParams.get("l") || ""
+  const router = useRouter()
+  
+  const [q, setQ] = useState(searchParams.get("q") || "")
+  const [l, setL] = useState(searchParams.get("l") || "")
 
   const [loading, setLoading] = useState(true)
   const [results, setResults] = useState<any[]>([])
@@ -27,11 +30,14 @@ function SearchResultsContent() {
         .select("*")
         .neq("professional_type", "outros")
 
-      if (q) {
-        query = query.or(`full_name.ilike.%${q}%,specialty.ilike.%${q}%`)
+      const queryQ = searchParams.get("q")
+      const queryL = searchParams.get("l")
+
+      if (queryQ) {
+        query = query.or(`full_name.ilike.%${queryQ}%,specialty.ilike.%${queryQ}%`)
       }
-      if (l) {
-        query = query.or(`location_city.ilike.%${l}%,location_neighborhood.ilike.%${l}%`)
+      if (queryL) {
+        query = query.or(`location_city.ilike.%${queryL}%,location_neighborhood.ilike.%${queryL}%`)
       }
 
       const { data, error } = await query
@@ -42,18 +48,27 @@ function SearchResultsContent() {
       setLoading(false)
     }
     fetchResults()
-  }, [q, l, supabase])
+  }, [searchParams, supabase])
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const params = new URLSearchParams()
+    if (q) params.set("q", q)
+    if (l) params.set("l", l)
+    router.push(`/busca?${params.toString()}`)
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Search Header */}
-      <div className="flex flex-col md:flex-row gap-4 mb-8">
+      <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-4 mb-8">
         <div className="flex-grow flex items-center bg-white border rounded-lg px-4 gap-2">
           <Search className="text-gray-400 w-5 h-5" />
           <Input 
             placeholder="Especialidade ou nome..." 
             className="border-0 focus-visible:ring-0" 
-            defaultValue={q}
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
           />
         </div>
         <div className="flex-grow flex items-center bg-white border rounded-lg px-4 gap-2">
@@ -61,11 +76,12 @@ function SearchResultsContent() {
           <Input 
             placeholder="Localização..." 
             className="border-0 focus-visible:ring-0"
-            defaultValue={l}
+            value={l}
+            onChange={(e) => setL(e.target.value)}
           />
         </div>
-        <Button className="bg-blue-600">Filtrar</Button>
-      </div>
+        <Button type="submit" className="bg-blue-600">Buscar</Button>
+      </form>
 
       <div className="flex gap-8">
         {/* Sidebar Filtros */}
@@ -105,7 +121,7 @@ function SearchResultsContent() {
                     {prof.avatar_url ? (
                       <Image src={prof.avatar_url} alt={prof.full_name} fill className="object-cover" />
                     ) : (
-                      <div className="flex items-center justify-center h-full text-gray-400 italic">Sem foto</div>
+                      <div className="flex items-center justify-center h-full text-gray-400 italic text-xs">Sem foto</div>
                     )}
                   </div>
                   <div className="p-6 flex-grow">
@@ -127,8 +143,10 @@ function SearchResultsContent() {
                       {prof.location_neighborhood}, {prof.location_city}
                     </div>
                     <div className="flex items-center justify-between mt-auto">
-                      <p className="text-xs text-green-600 font-medium bg-green-50 px-2 py-1 rounded">Próximo horário: Hoje 14:00</p>
-                      <Button className="bg-blue-600">Ver Perfil e Agendar</Button>
+                      <p className="text-xs text-green-600 font-medium bg-green-50 px-2 py-1 rounded">Próximo horário disponível</p>
+                      <Button asChild className="bg-blue-600">
+                        <Link href={`/profissionais/${prof.id}`}>Ver Perfil e Agendar</Link>
+                      </Button>
                     </div>
                   </div>
                 </CardContent>

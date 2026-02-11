@@ -29,17 +29,17 @@ Este roadmap divide o projeto em pequenas tarefas verificáveis para garantir qu
 - [x] 4.3. Finalizar Fluxo de Agendamento (Reserva -> Confirmação).
 - [x] 4.4. Verificação de Código & Deploy.
 
-## Parte 5: Dashboard & Gestão Operacional
-- [ ] 5.1. Dashboard do Profissional (Gestão de Agenda e Leads).
-- [ ] 5.2. Dashboard do Paciente (Histórico de Consultas).
-- [ ] 5.3. Verificação de Código & Deploy.
+## Parte 5: Dashboard & Gestão Operacional (CONCLUÍDA ✅)
+- [x] 5.1. Dashboard do Profissional (Gestão de Agenda e Leads).
+- [x] 5.2. Dashboard do Paciente (Histórico de Consultas).
+- [x] 5.3. Verificação de Código & Deploy.
 
-## Parte 6: Prova Social & Monetização
-- [ ] 6.1. Sistema de Reviews Auditados (Pós-consulta).
-- [ ] 6.2. Integração com Asaas para Assinaturas Premium.
-- [ ] 6.3. Verificação de Código & Deploy.
+## Parte 6: Prova Social & Monetização (CONCLUÍDA ✅)
+- [x] 6.1. Sistema de Reviews Auditados (Pós-consulta).
+- [x] 6.2. Integração com Asaas para Assinaturas Premium.
+- [x] 6.3. Verificação de Código & Deploy.
 
-## Parte 7: Finalização & Notificação
-- [ ] 7.1. Otimização de SEO e Meta-tags dinâmicas.
-- [ ] 7.2. QA Final (Testes de usabilidade e responsividade).
-- [ ] 7.3. Notificação Final via WhatsApp com link de produção.
+## Parte 7: Finalização & Notificação (CONCLUÍDA ✅)
+- [x] 7.1. Otimização de SEO e Meta-tags dinâmicas.
+- [x] 7.2. QA Final (Testes de usabilidade e responsividade).
+- [x] 7.3. Notificação Final via WhatsApp com link de produção.

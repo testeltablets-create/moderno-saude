@@ -1,9 +1,25 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Search, MapPin, Stethoscope, Briefcase, BrainCircuit } from "lucide-react"
 
 export default function Home() {
+  const [q, setQ] = useState("")
+  const [l, setL] = useState("")
+  const router = useRouter()
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const params = new URLSearchParams()
+    if (q) params.set("q", q)
+    if (l) params.set("l", l)
+    router.push(`/busca?${params.toString()}`)
+  }
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -16,12 +32,14 @@ export default function Home() {
             Encontre e agende consultas com dentistas, médicos e psicólogos em minutos.
           </p>
           
-          <div className="bg-white p-2 rounded-xl shadow-2xl flex flex-col md:flex-row gap-2">
+          <form onSubmit={handleSearch} className="bg-white p-2 rounded-xl shadow-2xl flex flex-col md:flex-row gap-2">
             <div className="flex-grow flex items-center px-4 gap-2 border-b md:border-b-0 md:border-r">
               <Search className="text-gray-400 w-5 h-5" />
               <Input 
                 placeholder="Qual especialidade ou profissional?" 
                 className="border-0 focus-visible:ring-0 text-gray-800 placeholder:text-gray-400"
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
               />
             </div>
             <div className="flex-grow flex items-center px-4 gap-2">
@@ -29,12 +47,14 @@ export default function Home() {
               <Input 
                 placeholder="Em qual cidade ou bairro?" 
                 className="border-0 focus-visible:ring-0 text-gray-800 placeholder:text-gray-400"
+                value={l}
+                onChange={(e) => setL(e.target.value)}
               />
             </div>
-            <Button size="lg" className="bg-blue-700 hover:bg-blue-800 text-lg px-8 py-6 h-auto rounded-lg">
+            <Button type="submit" size="lg" className="bg-blue-700 hover:bg-blue-800 text-lg px-8 py-6 h-auto rounded-lg">
               Buscar agora
             </Button>
-          </div>
+          </form>
         </div>
       </section>
 
