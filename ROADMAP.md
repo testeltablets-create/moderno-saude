@@ -11,11 +11,11 @@ Este roadmap divide o projeto em pequenas tarefas verificáveis para garantir qu
 - [x] 1.4. Script de Verificação: Rodar `npm run build` e `lint` para garantir integridade.
 - [x] 1.5. Deploy em Produção (Vercel).
 
-## Parte 2: Autenticação & Fluxo de Usuário
-- [ ] 2.1. Implementar Login/Cadastro via Supabase OTP (WhatsApp/Email).
-- [ ] 2.2. Criar Formulário de Onboarding para Profissionais (Multidisciplinar).
-- [ ] 2.3. Implementar Proteção de Rotas (Middleware).
-- [ ] 2.4. Verificação de Código & Deploy.
+## Parte 2: Autenticação & Fluxo de Usuário (CONCLUÍDA ✅)
+- [x] 2.1. Implementar Login/Cadastro via Supabase OTP (WhatsApp/Email).
+- [x] 2.2. Criar Formulário de Onboarding para Profissionais (Multidisciplinar).
+- [x] 2.3. Implementar Proteção de Rotas (Middleware).
+- [x] 2.4. Verificação de Código & Deploy.
 
 ## Parte 3: Busca & Marketplace (O Motor)
 - [ ] 3.1. Criar Página de Resultados de Busca com Filtros Dinâmicos.
