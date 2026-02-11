@@ -4,12 +4,12 @@ Este roadmap divide o projeto em pequenas tarefas verificáveis para garantir qu
 
 ---
 
-## Parte 1: Landing Page & Identidade Visual (ATUAL)
-- [ ] 1.1. Configurar Componentes de UI (ShadcnUI) e Layout Global (Header/Footer).
-- [ ] 1.2. Criar Seção Hero com Busca Multidisciplinar (Design focado em conversão).
-- [ ] 1.3. Implementar Seção de Categorias (Cards para Dentistas, Médicos, Psicólogos).
-- [ ] 1.4. Script de Verificação: Rodar `npm run build` e `lint` para garantir integridade.
-- [ ] 1.5. Deploy em Produção (Vercel).
+## Parte 1: Landing Page & Identidade Visual (CONCLUÍDA ✅)
+- [x] 1.1. Configurar Componentes de UI (ShadcnUI) e Layout Global (Header/Footer).
+- [x] 1.2. Criar Seção Hero com Busca Multidisciplinar (Design focado em conversão).
+- [x] 1.3. Implementar Seção de Categorias (Cards para Dentistas, Médicos, Psicólogos).
+- [x] 1.4. Script de Verificação: Rodar `npm run build` e `lint` para garantir integridade.
+- [x] 1.5. Deploy em Produção (Vercel).
 
 ## Parte 2: Autenticação & Fluxo de Usuário
 - [ ] 2.1. Implementar Login/Cadastro via Supabase OTP (WhatsApp/Email).
